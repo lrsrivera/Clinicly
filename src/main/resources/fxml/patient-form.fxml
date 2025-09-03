@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<ScrollPane fitToWidth="true" fitToHeight="true" fx:controller="com.icc.clinic.controller.PatientFormController" xmlns:fx="http://javafx.com/fxml">
+    <content>
+        <VBox spacing="10" xmlns="http://javafx.com/javafx"
+              xmlns:fx="http://javafx.com/fxml"
+              stylesheets="/style.css"
+              style="-fx-padding: 20; -fx-max-width: 420; -fx-min-width: 260;">
+            <GridPane vgap="10" hgap="10">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="110" />
+                    <ColumnConstraints minWidth="120" />
+                </columnConstraints>
+                <Label text="Student ID:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <TextField fx:id="studentIdField" GridPane.columnIndex="1" GridPane.rowIndex="0" minWidth="120" />
+                
+                <Label text="First Name:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <TextField fx:id="firstNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" minWidth="120" />
+                
+                <Label text="Last Name:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="2" minWidth="120" />
+                
+                <Label text="Date of Birth:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                <DatePicker fx:id="dateOfBirthPicker" GridPane.columnIndex="1" GridPane.rowIndex="3" minWidth="120" />
+                
+                <Label text="Gender:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                <ComboBox fx:id="genderComboBox" GridPane.columnIndex="1" GridPane.rowIndex="4" minWidth="120" />
+                
+                <Label text="Grade:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                <TextField fx:id="gradeField" GridPane.columnIndex="1" GridPane.rowIndex="5" minWidth="120" />
+                
+                <Label text="Contact Number:" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                <TextField fx:id="contactNumberField" GridPane.columnIndex="1" GridPane.rowIndex="6" minWidth="120" />
+                
+                <Label text="Address:" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+                <TextArea fx:id="addressField" GridPane.columnIndex="1" GridPane.rowIndex="7" minWidth="120" />
+                
+                <Label text="Allergies:" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+                <TextArea fx:id="allergiesField" GridPane.columnIndex="1" GridPane.rowIndex="8" minWidth="120" />
+                
+                <Label text="Medical History:" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+                <TextArea fx:id="medicalHistoryField" GridPane.columnIndex="1" GridPane.rowIndex="9" minWidth="120" />
+            </GridPane>
+            
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Button text="Cancel" onAction="#handleCancel"/>
+                <Button fx:id="saveButton" text="Save" onAction="#handleSave" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+            </HBox>
+        </VBox>
+    </content>
+</ScrollPane> 

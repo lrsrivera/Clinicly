@@ -1,0 +1,220 @@
+/* Modern Blue Theme for Clinic Management System - Enhanced */
+
+:root {
+    --clinicly-blue: #7bb3d1;
+    --clinicly-dark: #357ca5;
+    --clinicly-white: #fff;
+    --clinicly-gray: #f5f7fa;
+    --clinicly-green: #4CAF50;
+    --clinicly-red: #e74c3c;
+    --clinicly-font: 'Segoe UI', 'Arial', sans-serif;
+}
+
+.root, .background, .scene, .stack-pane, .vbox, .border-pane {
+    -fx-background-color: var(--clinicly-gray);
+    -fx-font-family: var(--clinicly-font);
+}
+
+.label, .text, .table-view, .table-cell {
+    -fx-font-family: var(--clinicly-font);
+    -fx-text-fill: #222;
+}
+
+.label.heading {
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1756a9;
+    -fx-padding: 24 0 24 0;
+    -fx-effect: dropshadow(gaussian, #fff, 2, 0.2, 0, 1);
+}
+
+.text-field, .password-field, .combo-box, .date-picker, .text-area {
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+    -fx-background-color: var(--clinicly-white);
+    -fx-border-color: #b3d3e6;
+    -fx-border-width: 1.2;
+    -fx-padding: 10 14 10 14;
+    -fx-font-size: 15px;
+    -fx-effect: dropshadow(gaussian, #e3edfa, 1, 0.1, 0, 1);
+}
+
+.button {
+    -fx-background-color: var(--clinicly-blue);
+    -fx-text-fill: var(--clinicly-white);
+    -fx-font-size: 15px;
+    -fx-font-family: var(--clinicly-font);
+    -fx-background-radius: 8;
+    -fx-padding: 8 24 8 24;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, #b3d3e6, 2, 0, 0, 1);
+}
+.button:hover {
+    -fx-background-color: var(--clinicly-dark);
+}
+.button:default {
+    -fx-background-color: var(--clinicly-green);
+}
+
+.table-view {
+    -fx-background-color: var(--clinicly-white);
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-border-color: transparent;
+    -fx-effect: dropshadow(gaussian, #b3c6e7, 4, 0.25, 0, 4);
+    -fx-padding: 8;
+}
+.table-view .column-header-background {
+    -fx-background-color: var(--clinicly-blue);
+    -fx-background-radius: 6 6 0 0;
+}
+.table-view .column-header, .table-view .filler {
+    -fx-size: 44px;
+    -fx-border-width: 0 0 2 0;
+    -fx-border-color: transparent transparent #e0e6f0 transparent;
+}
+.table-view .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+}
+.table-row-cell {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #e0e6f0 transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 0 12 0 12;
+    -fx-cell-size: 48px;
+}
+.table-row-cell:odd {
+    -fx-background-color: #f7fafd;
+}
+.table-row-cell:even {
+    -fx-background-color: #ffffff;
+}
+.table-row-cell:filled:selected, .table-row-cell:filled:selected .text {
+    -fx-background-color: #e3edfa;
+    -fx-text-fill: #1756a9;
+}
+.table-row-cell:hover {
+    -fx-background-color: #eaf3fc;
+}
+
+/* Action buttons in table */
+.action-delete {
+    -fx-background-color: var(--clinicly-red);
+    -fx-text-fill: var(--clinicly-white);
+    -fx-background-radius: 6;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+    -fx-padding: 6 20 6 20;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, #f8d7da, 1, 0.1, 0, 1);
+    -fx-border-width: 0;
+    -fx-border-radius: 6;
+}
+.action-delete:hover {
+    -fx-background-color: #c0392b;
+}
+.action-details {
+    -fx-background-color: #17a2b8;
+    -fx-text-fill: white;
+    -fx-background-radius: 6;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+    -fx-padding: 6 20 6 20;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, #b3e6f7, 1, 0.1, 0, 1);
+    -fx-border-width: 0;
+    -fx-border-radius: 6;
+}
+.action-details:hover {
+    -fx-background-color: #138496;
+}
+
+.tab-pane .tab-header-background {
+    -fx-background-color: var(--clinicly-blue);
+}
+.tab-pane .tab {
+    -fx-background-color: var(--clinicly-blue);
+    -fx-background-radius: 6 6 0 0;
+    -fx-padding: 10 24 10 24;
+    -fx-font-size: 16px;
+}
+.tab-pane .tab .tab-label {
+    -fx-text-fill: var(--clinicly-white);
+    -fx-font-weight: normal;
+}
+.tab-pane .tab:selected {
+    -fx-background-color: var(--clinicly-white);
+    -fx-text-fill: var(--clinicly-blue);
+}
+.tab-pane .tab:selected .tab-label {
+    -fx-text-fill: var(--clinicly-blue);
+    -fx-font-weight: normal;
+}
+
+.vbox, .hbox, .grid-pane {
+    -fx-background-color: transparent;
+}
+
+/* Error label */
+.label.error {
+    -fx-text-fill: #e74c3c;
+    -fx-font-weight: bold;
+}
+
+/* Success label */
+.label.success {
+    -fx-text-fill: #27ae60;
+    -fx-font-weight: bold;
+}
+
+/* Card-like look for forms */
+.grid-pane {
+    -fx-background-color: #fff;
+    -fx-background-radius: 6;
+    -fx-padding: 28;
+    -fx-effect: dropshadow(gaussian, #b3c6e7, 3, 0.25, 0, 3);
+    -fx-spacing: 14;
+}
+
+/* Watermark logo for main app */
+.watermark-logo {
+    -fx-opacity: 0.10;
+    -fx-translate-y: 0;
+    -fx-translate-x: 0;
+    -fx-fit-width: 650;
+    -fx-fit-height: 650;
+    -fx-alignment: center;
+}
+
+/* Overlay to ensure text is readable over watermark */
+.overlay-card {
+    -fx-background-color: rgba(255,255,255,0.92);
+    -fx-background-radius: 8;
+    -fx-padding: 18 24 24 24;
+    -fx-effect: dropshadow(gaussian, #b3c6e7, 4, 0.3, 0, 4);
+}
+
+/* Login logo full opacity and centered */
+#logoImage {
+    -fx-opacity: 1.0;
+    -fx-alignment: center;
+    -fx-padding: 0 0 10 0;
+    -fx-effect: dropshadow(gaussian, #b3d3e6, 8, 0, 0, 2);
+}
+
+/* Responsive tweaks for small screens */
+@media screen and (max-width: 600px) {
+    .vbox, .hbox, .grid-pane {
+        -fx-padding: 8;
+        -fx-spacing: 6;
+    }
+    .label, .text-field, .combo-box, .date-picker, .text-area {
+        -fx-font-size: 13px;
+    }
+    .button {
+        -fx-font-size: 13px;
+        -fx-padding: 6 12 6 12;
+    }
+} 

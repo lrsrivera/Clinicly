@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.icc.clinic.controller.MainController">
+    <ImageView fx:id="watermarkLogo" styleClass="watermark-logo" pickOnBounds="true" opacity="0.08">
+        <image>
+            <Image url="@/logo.png" />
+        </image>
+    </ImageView>
+    <VBox styleClass="overlay-card">
+        <BorderPane stylesheets="/style.css">
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 20px;">
+            <ImageView fitWidth="36" fitHeight="36" preserveRatio="true">
+                <image>
+                    <Image url="@/logo.png" />
+                </image>
+            </ImageView>
+            <Label text="Clinicly" style="-fx-font-size: 24px;" />
+        </HBox>
+    </top>
+    <center>
+        <TabPane>
+            <tabs>
+                        <Tab text="Add Patient" closable="false">
+                            <content>
+                                <HBox spacing="32" style="-fx-padding: 24;">
+                                    <VBox spacing="12" style="-fx-pref-width: 340;">
+                                        <GridPane hgap="10" vgap="10">
+                                            <columnConstraints>
+                                                <ColumnConstraints minWidth="110" />
+                                                <ColumnConstraints minWidth="180" />
+                                            </columnConstraints>
+                                            <Label text="Student ID:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                            <TextField fx:id="studentIdField" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                            <Label text="First Name:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                            <TextField fx:id="firstNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                            <Label text="Last Name:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                                            <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                            <Label text="Date of Birth:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                                            <DatePicker fx:id="dateOfBirthPicker" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                            <Label text="Gender:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                                            <ComboBox fx:id="genderComboBox" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                            <Label text="Grade/Role:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                                            <ComboBox fx:id="gradeComboBox" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                            <Label text="Contact Number:" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+                                            <TextField fx:id="contactNumberField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                        </GridPane>
+                                    </VBox>
+                                    <VBox spacing="12" style="-fx-pref-width: 420;">
+                                        <Label text="Address:" />
+                                        <TextArea fx:id="addressField" prefRowCount="2" />
+                                        <Label text="Allergies:" />
+                                        <TextArea fx:id="allergiesField" prefRowCount="2" />
+                                        <Label text="Medical History:" />
+                                        <TextArea fx:id="medicalHistoryField" prefRowCount="2" />
+                                        <Label text="Visit Notes:" />
+                                        <TextArea fx:id="visitNotesField" prefRowCount="2" />
+                                        <Button text="Add Patient" onAction="#handleAddPatient" style="-fx-margin-top: 10; -fx-pref-width: 200;" />
+                                    </VBox>
+                                </HBox>
+                            </content>
+                        </Tab>
+                        <Tab text="Patients List" closable="false">
+                            <content>
+                                <VBox spacing="16" style="-fx-padding: 10;">
+                                    <HBox spacing="10">
+                                        <TextField fx:id="searchField" promptText="Search by ID, name, or grade" />
+                                        <Button text="Search" onAction="#handleSearch" />
+                                        <Button text="Import from Excel" onAction="#handleImportExcel" />
+                                    </HBox>
+                                    <ScrollPane fitToWidth="true" fitToHeight="true" style="-fx-background-color:transparent;">
+                    <content>
+                        <TableView fx:id="patientsTable">
+                            <columns>
+                                                    <TableColumn fx:id="studentIdColumn" text="Student ID" prefWidth="120" />
+                                                    <TableColumn fx:id="nameColumn" text="Name" prefWidth="180" />
+                                                    <TableColumn fx:id="gradeColumn" text="Grade" prefWidth="120" />
+                                                    <TableColumn fx:id="actionsColumn" text="Actions" prefWidth="180" />
+                            </columns>
+                        </TableView>
+                                        </content>
+                                    </ScrollPane>
+                                </VBox>
+                    </content>
+                </Tab>
+                        <Tab text="Appointment Management" closable="false">
+                    <content>
+                                <VBox spacing="18" style="-fx-padding: 18;">
+                                    <HBox spacing="6" alignment="CENTER_LEFT">
+                                    <Label text="Schedule Appointment" style="-fx-font-size: 18px; -fx-padding: 0 0 8 0;" />
+                                        <ImageView fx:id="scheduleInfoIcon" fitWidth="20" fitHeight="20" pickOnBounds="true" preserveRatio="true" onMouseClicked="#showScheduleInfo" translateY="-4">
+                                            <image>
+                                                <Image url="@/info.png" />
+                                            </image>
+                                        </ImageView>
+                                    </HBox>
+                                    <GridPane hgap="10" vgap="10">
+                                        <columnConstraints>
+                                            <ColumnConstraints minWidth="100" />
+                                            <ColumnConstraints minWidth="150" />
+                                            <ColumnConstraints minWidth="100" />
+                                            <ColumnConstraints minWidth="150" />
+                                        </columnConstraints>
+                                        <rowConstraints>
+                                            <RowConstraints minHeight="30" />
+                                            <RowConstraints minHeight="30" />
+                                            <RowConstraints minHeight="30" />
+                                        </rowConstraints>
+                                        
+                                        <Label text="Patient:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                        <ComboBox fx:id="appointmentPatientComboBox" promptText="Select Patient" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.columnSpan="3" />
+                                        
+                                        <Label text="Date:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                        <DatePicker fx:id="appointmentDatePicker" promptText="Date" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                        
+                                        <Label text="Start Time:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                                        <HBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                            <ComboBox fx:id="appointmentStartHourComboBox" promptText="HH" minWidth="60" />
+                                            <Label text=":" />
+                                            <ComboBox fx:id="appointmentStartMinuteComboBox" promptText="MM" minWidth="60" />
+                                            <ComboBox fx:id="appointmentStartAmPmComboBox" promptText="AM/PM" minWidth="60" />
+                                        </HBox>
+                                        
+                                        <Label text="End Time:" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                        <HBox spacing="5" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                            <ComboBox fx:id="appointmentEndHourComboBox" promptText="HH" minWidth="60" />
+                                        <Label text=":" />
+                                            <ComboBox fx:id="appointmentEndMinuteComboBox" promptText="MM" minWidth="60" />
+                                            <ComboBox fx:id="appointmentEndAmPmComboBox" promptText="AM/PM" minWidth="60" />
+                                        </HBox>
+                                    </GridPane>
+                                    
+                                    <GridPane hgap="10" vgap="10" style="-fx-padding: 10 0 0 0;">
+                                        <columnConstraints>
+                                            <ColumnConstraints minWidth="100" />
+                                            <ColumnConstraints minWidth="300" />
+                                            <ColumnConstraints minWidth="100" />
+                                            <ColumnConstraints minWidth="300" />
+                                        </columnConstraints>
+                                        <rowConstraints>
+                                            <RowConstraints minHeight="30" />
+                                            <RowConstraints minHeight="30" />
+                                        </rowConstraints>
+                                        
+                                        <Label text="Purpose:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                        <TextField fx:id="appointmentPurposeField" promptText="Purpose" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                        
+                                        <Label text="Notes:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                        <TextField fx:id="appointmentNotesField" promptText="Notes" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.columnSpan="3" />
+                                    </GridPane>
+                                    
+                                    <HBox alignment="CENTER_RIGHT" spacing="10" style="-fx-padding: 10 0 0 0;">
+                                        <Button text="Schedule" onAction="#handleScheduleAppointment" />
+                                    </HBox>
+                                    
+                                    <HBox alignment="CENTER_RIGHT" spacing="10" style="-fx-padding: 10 0 0 0;">
+                                        <DatePicker fx:id="filterStartDate" promptText="Start Date" />
+                                        <DatePicker fx:id="filterEndDate" promptText="End Date" />
+                                        <Button text="Filter" onAction="#handleFilterAppointments" />
+                                    </HBox>
+                                    
+                                    <TableView fx:id="appointmentsTable" style="-fx-padding: 10 0 0 0;">
+                            <columns>
+                                            <TableColumn fx:id="appointmentNoColumn" text="No." prefWidth="60" />
+                                            <TableColumn fx:id="appointmentDateColumn" text="Date" prefWidth="100" />
+                                            <TableColumn fx:id="appointmentStartTimeColumn" text="Start Time" prefWidth="100" />
+                                            <TableColumn fx:id="appointmentEndTimeColumn" text="End Time" prefWidth="100" />
+                                            <TableColumn fx:id="appointmentNameColumn" text="Patient Name" prefWidth="200" />
+                                            <TableColumn fx:id="appointmentStudentNoColumn" text="Student No." prefWidth="100" />
+                                            <TableColumn fx:id="appointmentPurposeColumn" text="Purpose" prefWidth="150" />
+                                            <TableColumn fx:id="appointmentStatusColumn" text="Status" prefWidth="100" />
+                                            <TableColumn fx:id="appointmentActionsColumn" text="Actions" prefWidth="120" />
+                            </columns>
+                        </TableView>
+                                </VBox>
+                    </content>
+                </Tab>
+                <Tab text="Archive" closable="false">
+                    <content>
+                        <VBox spacing="24" style="-fx-padding: 18;">
+                            <Label text="Archived Patient List" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                            <TextField fx:id="archivedPatientFilterField" promptText="Filter by name..." maxWidth="300" />
+                            <TableView fx:id="archivedPatientsTable">
+                                <columns>
+                                    <TableColumn fx:id="archivedPatientStudentIdColumn" text="Student ID" prefWidth="120" />
+                                    <TableColumn fx:id="archivedPatientNameColumn" text="Name" prefWidth="180" />
+                                    <TableColumn fx:id="archivedPatientGradeColumn" text="Grade" prefWidth="120" />
+                                    <TableColumn fx:id="archivedPatientActionsColumn" text="Actions" prefWidth="180" />
+                                </columns>
+                            </TableView>
+                            <Label text="Archived Appointments" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 16 0 0 0;" />
+                                    <HBox spacing="10">
+                                <TextField fx:id="archivedAppointmentFilterField" promptText="Filter by patient name..." maxWidth="200" />
+                                <DatePicker fx:id="archivedAppointmentDateFilter" promptText="Filter by date..." maxWidth="160" />
+                                    </HBox>
+                            <TableView fx:id="archivedAppointmentsTable">
+                                <columns>
+                                    <TableColumn fx:id="archivedAppointmentNoColumn" text="No." prefWidth="60" />
+                                    <TableColumn fx:id="archivedAppointmentDateColumn" text="Date" prefWidth="100" />
+                                    <TableColumn fx:id="archivedAppointmentStartTimeColumn" text="Start Time" prefWidth="100" />
+                                    <TableColumn fx:id="archivedAppointmentEndTimeColumn" text="End Time" prefWidth="100" />
+                                    <TableColumn fx:id="archivedAppointmentNameColumn" text="Patient Name" prefWidth="200" />
+                                    <TableColumn fx:id="archivedAppointmentStudentNoColumn" text="Student No." prefWidth="100" />
+                                    <TableColumn fx:id="archivedAppointmentPurposeColumn" text="Purpose" prefWidth="150" />
+                                    <TableColumn fx:id="archivedAppointmentStatusColumn" text="Status" prefWidth="100" />
+                                    <TableColumn fx:id="archivedAppointmentActionsColumn" text="Actions" prefWidth="120" />
+                                </columns>
+                            </TableView>
+                                </VBox>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+</BorderPane> 
+    </VBox>
+</StackPane> 

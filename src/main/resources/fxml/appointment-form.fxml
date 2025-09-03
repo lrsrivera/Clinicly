@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.icc.clinic.controller.AppointmentFormController"
+      stylesheets="/style.css"
+      style="-fx-padding: 20;">
+    
+    <GridPane vgap="10" hgap="10">
+        <Label text="Patient:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <ComboBox fx:id="patientComboBox" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        
+        <Label text="Date:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <DatePicker fx:id="datePicker" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        
+        <Label text="Time:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <ComboBox fx:id="timeComboBox" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        
+        <Label text="Purpose:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <ComboBox fx:id="purposeComboBox" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+        
+        <Label text="Status:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+        <ComboBox fx:id="statusComboBox" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+        
+        <Label text="Notes:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+        <TextArea fx:id="notesField" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+    </GridPane>
+    
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Cancel" onAction="#handleCancel"/>
+        <Button text="Save" onAction="#handleSave" 
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+    </HBox>
+</VBox> 

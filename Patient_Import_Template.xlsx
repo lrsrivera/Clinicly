@@ -1,0 +1,2 @@
+student_id,first_name,last_name,date_of_birth,gender,grade,contact_number,address,allergies,medical_history
+2023001,John,Doe,2005-08-15,Male,Grade 10,09171234567,123 Main St.,Penicillin,Asthma 
