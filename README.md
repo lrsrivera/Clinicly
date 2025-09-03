@@ -1,6 +1,6 @@
 # Clinicly - School Clinic Management System
 
-A comprehensive JavaFX-based clinic management system for Immaculada Concepcion College, built with Spring Boot and SQLite.
+A comprehensive JavaFX-based clinic management system built with Spring Boot and SQLite.
 
 ## Features
 
@@ -110,8 +110,9 @@ To reset the database, delete `data/clinic.db` and restart the application. The 
 
 ## License
 
-This project is developed for educational purposes at Immaculada Concepcion College.
+This project is developed for educational purposes
 
 ## Support
 
 For technical support or questions, please contact the development team.
+
