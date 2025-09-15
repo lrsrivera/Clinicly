@@ -29,7 +29,7 @@ public class ClinicApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("Immaculada Concepcion College Clinic Management System");
+        primaryStage.setTitle("Clinicly - Clinic Management System");
         Scene scene = new Scene(rootNode);
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -39,4 +39,5 @@ public class ClinicApplication extends Application {
     public void stop() {
         springContext.close();
     }
+
 } 
