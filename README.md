@@ -92,7 +92,6 @@ mvn javafx:run
 - **Data Encryption**: Sensitive patient and user data encrypted at rest
 - **Password Security**: Strong password requirements and forced password changes
 - **Input Validation**: Comprehensive data validation and sanitization
-- **Audit Logging**: Complete activity tracking and logging
 
 ## 📊 Features
 
@@ -100,7 +99,6 @@ mvn javafx:run
 - **Appointment Scheduling**: Schedule and track medical appointments
 - **User Management**: Create and manage user accounts
 - **Data Import/Export**: Excel template support for bulk patient import
-- **Modern UI**: Clean JavaFX interface with responsive design
 - **Search & Filter**: Advanced search and filtering capabilities
 
 ## 📁 Project Structure
