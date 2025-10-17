@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="20" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.icc.clinic.controller.UserManagementController">
+    
+    <padding>
+        <Insets bottom="20" left="20" right="20" top="20"/>
+    </padding>
+
+    <Label text="User Management"/>
+    
+    <TabPane>
+        <tabs>
+            <Tab text="Users" closable="false">
+                <content>
+                    <HBox spacing="20">
+        <!-- User List -->
+        <VBox spacing="20" style="-fx-pref-width: 600;">
+            <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 10 0 15 0;">
+                <Button text="Refresh" onAction="#handleRefresh" fx:id="refreshButton"/>
+            </HBox>
+            
+            <TableView fx:id="usersTable" style="-fx-max-height: 400;">
+                <columnResizePolicy>
+                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                </columnResizePolicy>
+                <columns>
+                    <TableColumn fx:id="usernameColumn" text="Username" prefWidth="100"/>
+                    <TableColumn fx:id="firstNameColumn" text="First Name" prefWidth="100"/>
+                    <TableColumn fx:id="lastNameColumn" text="Last Name" prefWidth="100"/>
+                    <TableColumn fx:id="emailColumn" text="Email" prefWidth="150"/>
+                    <TableColumn fx:id="roleColumn" text="Role" prefWidth="80"/>
+                    <TableColumn fx:id="activeColumn" text="Active" prefWidth="60"/>
+                </columns>
+            </TableView>
+        </VBox>
+        
+        <!-- User Form -->
+        <VBox spacing="15" style="-fx-pref-width: 360;">
+            <Label text="User Details"/>
+            
+            <GridPane hgap="10" vgap="10">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="80"/>
+                    <ColumnConstraints minWidth="200"/>
+                </columnConstraints>
+                
+                <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <TextField fx:id="usernameField" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                
+                <Label text="First Name:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <TextField fx:id="firstNameField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                
+                <Label text="Last Name:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                
+                <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                
+                <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                <HBox spacing="8" GridPane.columnIndex="1" GridPane.rowIndex="4" alignment="CENTER_LEFT">
+                    <PasswordField fx:id="passwordField" editable="false" promptText="temporary/default" prefWidth="200"/>
+                    <Button text="Reset password" onAction="#handleResetPassword"/>
+                </HBox>
+                
+                <Label text="Role:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                <ComboBox fx:id="roleComboBox" GridPane.columnIndex="1" GridPane.rowIndex="5" promptText="Select Role"/>
+                
+                <Label text="Active:" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                <HBox spacing="6" alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                    <CheckBox fx:id="activeCheckBox" selected="true"/>
+                    <Label text="(Enable/disable user login)" style="-fx-font-size: 10px; -fx-text-fill: #666;"/>
+                </HBox>
+                
+                <Label text="Role Details:" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+                <Label fx:id="roleDescriptionLabel" text="Select a role to see details" GridPane.columnIndex="1" GridPane.rowIndex="7" wrapText="true"/>
+            </GridPane>
+            
+            <HBox spacing="10">
+                <Button text="Add" onAction="#handleAddUser" fx:id="addUserButton"/>
+                <Button text="Edit" onAction="#handleEditUser" fx:id="editUserButton"/>
+                <Button text="Save" onAction="#handleSaveUser" fx:id="saveUserButton" visible="false"/>
+                <Button text="Delete" onAction="#handleDeleteUser" fx:id="deleteUserButton"/>
+            </HBox>
+            
+        </VBox>
+                    </HBox>
+                </content>
+            </Tab>
+            <Tab text="Activity Logs" closable="false">
+                <content>
+                    <VBox spacing="10">
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <DatePicker fx:id="logStartDate" promptText="Start date"/>
+                            <DatePicker fx:id="logEndDate" promptText="End date"/>
+                            <Button text="Filter" onAction="#handleFilterLogs"/>
+                            <Button text="Refresh" onAction="#handleRefreshLogs"/>
+                        </HBox>
+                        <TableView fx:id="logsTable">
+                            <columnResizePolicy>
+                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                            </columnResizePolicy>
+                            <columns>
+                                <TableColumn fx:id="logTimeColumn" text="Timestamp" prefWidth="180" sortable="false" reorderable="false"/>
+                                <TableColumn fx:id="logAdminColumn" text="Action Made by" prefWidth="120" sortable="false" reorderable="false"/>
+                                <TableColumn fx:id="logTargetColumn" text="Target User" prefWidth="120" sortable="false" reorderable="false"/>
+                                <TableColumn fx:id="logActionColumn" text="Action" prefWidth="120" sortable="false" reorderable="false"/>
+                                <TableColumn fx:id="logDetailsColumn" text="Details" prefWidth="220" sortable="false" reorderable="false"/>
+                            </columns>
+                        </TableView>
+                    </VBox>
+                </content>
+            </Tab>
+        </tabs>
+    </TabPane>
+    
+    <Label text="Note: Only IT administrators can manage users. Password field shows 'temporary/default' for new users - actual password is set automatically based on role." 
+           style="-fx-font-style: italic; -fx-text-fill: #666;"/>
+</VBox>
