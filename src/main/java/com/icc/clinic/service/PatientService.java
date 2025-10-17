@@ -77,15 +77,54 @@ public class PatientService {
     }
     
     public List<Appointment> getPatientAppointments(Long patientId) {
-        return appointmentRepository.findByPatientId(patientId);
+        List<Appointment> appointments = appointmentRepository.findByPatientId(patientId);
+        
+        // Decrypt patient data for each appointment
+        return appointments.stream()
+                .map(appointment -> {
+                    if (appointment.getPatient() != null) {
+                        Patient decryptedPatient = decryptSensitiveData(appointment.getPatient());
+                        appointment.setPatient(decryptedPatient);
+                    }
+                    return appointment;
+                })
+                .collect(java.util.stream.Collectors.toList());
     }
     
     public List<Appointment> getAppointmentsByDateRange(LocalDateTime startDate, LocalDateTime endDate) {
-        return appointmentRepository.findByDateRange(startDate, endDate);
+        List<Appointment> appointments = appointmentRepository.findByDateRange(startDate, endDate);
+        
+        // Decrypt patient data for each appointment
+        return appointments.stream()
+                .map(appointment -> {
+                    if (appointment.getPatient() != null) {
+                        Patient decryptedPatient = decryptSensitiveData(appointment.getPatient());
+                        appointment.setPatient(decryptedPatient);
+                    }
+                    return appointment;
+                })
+                .collect(java.util.stream.Collectors.toList());
     }
     
     public List<Appointment> getAllAppointments() {
-        return appointmentRepository.findByArchivedFalse();
+        List<Appointment> appointments = appointmentRepository.findByArchivedFalse();
+        System.out.println("[PatientService] Found " + appointments.size() + " appointments from database");
+        
+        // Decrypt patient data for each appointment
+        List<Appointment> decryptedAppointments = appointments.stream()
+                .map(appointment -> {
+                    if (appointment.getPatient() != null) {
+                        Patient decryptedPatient = decryptSensitiveData(appointment.getPatient());
+                        appointment.setPatient(decryptedPatient);
+                        System.out.println("[PatientService] Decrypted patient for appointment: " + 
+                                         decryptedPatient.getFirstName() + " " + decryptedPatient.getLastName());
+                    }
+                    return appointment;
+                })
+                .collect(java.util.stream.Collectors.toList());
+        
+        System.out.println("[PatientService] Decrypted " + decryptedAppointments.size() + " appointments");
+        return decryptedAppointments;
     }
     
     public List<Patient> getArchivedPatients() {
